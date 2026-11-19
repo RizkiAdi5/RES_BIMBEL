@@ -197,7 +197,13 @@ h2 { font-size: clamp(1.7rem, 3.4vw, 2.5rem); }
 .marquee {
   background: var(--navy-deep); color: var(--gold-soft);
   overflow: hidden; padding: 14px 0; border-bottom: 1px solid rgba(255,255,255,.06);
+  position: relative;
 }
+.marquee::before, .marquee::after {
+  content: ""; position: absolute; top: 0; bottom: 0; width: 70px; z-index: 1; pointer-events: none;
+}
+.marquee::before { left: 0; background: linear-gradient(to right, var(--navy-deep), transparent); }
+.marquee::after { right: 0; background: linear-gradient(to left, var(--navy-deep), transparent); }
 .marquee-track {
   display: flex; gap: 14px; white-space: nowrap; width: max-content;
   animation: scroll-left 32s linear infinite;
